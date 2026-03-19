@@ -28,7 +28,7 @@ bool stringComplete = false;
 void setup() {
   // put your setup code here, to run once:
   
-  Serial.begin(9600); 
+  Serial.begin(9600);
 
   // put your setup code here, to run once:
   pinMode(linearMotorPin1, OUTPUT);
@@ -88,19 +88,27 @@ void loop() {
     Serial.println(inputString);
     int firstComma = inputString.indexOf(',');
     int secondComma = inputString.indexOf(',', firstComma + 1);
+    int thirdComma = inputString.indexOf(',', secondComma + 1);
+    int forthComma = inputString.indexOf(',', thirdComma + 1);
+    int fifthComma = inputString.indexOf(',', forthComma + 1);
+
+
 
     if (firstComma > 0 && secondComma > 0) {
       int dx = inputString.substring(0, firstComma).toInt();
       int dy = inputString.substring(firstComma + 1, secondComma).toInt();
-      int dz = inputString.substring(secondComma + 1).toInt();
+      int dz1 = inputString.substring(secondComma + 1, thirdComma).toInt();
+      int dz2 = inputString.substring(thirdComma + 1, forthComma).toInt();
+      int dz3 = inputString.substring(forthComma + 1, fifthComma).toInt();
+      int dz4 = inputString.substring(fifthComma).toInt();
 
-      xCount += dx;
-      yCount += dy;
+      xCount = dx; // 누적 안되게 수정하기 (실시가넺 어를 위해서)
+      yCount = dy;
 
       // [안전 장치] zCount는 인터럽트에서도 건드리는 변수이므로, 
       // 값을 더할 때 잠깐 인터럽트를 꺼서 충돌(Race Condition)을 방지합니다.
       noInterrupts(); 
-      zCount += dz; 
+      zCount = dz1; 
       interrupts();
     }
 
