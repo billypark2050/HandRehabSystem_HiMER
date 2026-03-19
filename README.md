@@ -24,8 +24,8 @@ It uses a robust **non-blocking asynchronous architecture** with Hardware Timer 
 
 ## 🔌 Circuit Diagram & Pinout
 
-![Circuit Wiring Diagram](https://via.placeholder.com/800x500?text=Insert+Fritzing+or+Circuit+Diagram+Here)
-*(Replace the image above with your actual circuit diagram)*
+![Circuit Wiring Diagram](TwoStepperControlwithA4899.png)
+
 
 ### Stepper Motors (X, Y Axes)
 | Motor | Step Pin | Dir Pin | Note |
