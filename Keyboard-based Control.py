@@ -8,7 +8,7 @@ BAUD = 9600        # 보드레이트
 
 # 한 번 통신할 때 보낼 기본 이동량 (환경에 맞게 조절하세요)
 STEP_VAL = 20      # 스텝 모터: 한 번에 20스텝씩 이동
-DC_VAL = 200       # DC 모터: 한 번에 200ms씩 구동
+DC_VAL = 100       # DC 모터: 한 번에 200ms씩 구동
 
 try:
     ser = serial.Serial(PORT, BAUD, timeout=0.05)
@@ -41,18 +41,18 @@ try:
         is_pressed = False
 
         # 1. 스텝 모터 (X, Y) 제어
-        if keyboard.is_pressed('up'):
+        if keyboard.is_pressed('left'):
             dx = STEP_VAL
             is_pressed = True
-        elif keyboard.is_pressed('down'):
+        elif keyboard.is_pressed('right'):
             dx = -STEP_VAL
             is_pressed = True
 
-        if keyboard.is_pressed('left'):
-            dy = STEP_VAL
-            is_pressed = True
-        elif keyboard.is_pressed('right'):
+        if keyboard.is_pressed('up'):
             dy = -STEP_VAL
+            is_pressed = True
+        elif keyboard.is_pressed('down'):
+            dy = STEP_VAL
             is_pressed = True
 
         # 2. DC 모터 (Z1 ~ Z4) 제어
@@ -75,7 +75,7 @@ try:
             print(f"전송: {command.strip()}")
             
             # 아두이노가 처리할 수 있도록 약간의 딜레이 (데이터 병목 방지)
-            time.sleep(0.05) 
+            time.sleep(0.02) 
             
 except KeyboardInterrupt:
     print("\n강제 종료되었습니다.")
