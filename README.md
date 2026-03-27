@@ -24,7 +24,7 @@ It uses a robust **non-blocking asynchronous architecture** with Hardware Timer 
 
 ## 🔌 Circuit Diagram & Pinout
 
-![Circuit Wiring Diagram](\images\TwoStepperControlwithA4899.png)
+![Circuit Wiring Diagram](images/TwoStepperControlwithA4899.png)
 
 
 ### Stepper Motors (X, Y Axes)
